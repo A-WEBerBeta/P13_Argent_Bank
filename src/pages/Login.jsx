@@ -11,6 +11,7 @@ import {
 export default function Login() {
   const [email_, setEmail_] = useState("");
   const [password, setPassword] = useState("");
+  const [msgError, setMsgError] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -18,24 +19,45 @@ export default function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (msgError.length > 0) {
+      setMsgError("");
+    }
 
-    const res = await fetch("http://localhost:3001/api/v1/user/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email: email_, password }),
-    });
+    try {
+      const res = await fetch(
+        import.meta.env.VITE_API_BASE_URL + "/user/login",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email: email_, password }),
+        }
+      );
 
-    const data = await res.json();
-    const token = data?.token ?? data?.body?.token;
+      const data = await res.json();
 
-    if (token) {
-      if (remember) {
-        dispatch(setEmailInStore(email_));
-      } else {
-        dispatch(clearEmail());
+      if (data.status != 200) {
+        if (data.message) {
+          setMsgError(data.message);
+        } else {
+          setMsgError("Unknown error.");
+        }
+        return;
       }
-      dispatch(setToken(token));
-      navigate("/profile");
+
+      const token = data?.token ?? data?.body?.token;
+
+      if (token) {
+        if (remember) {
+          dispatch(setEmailInStore(email_));
+        } else {
+          dispatch(clearEmail());
+        }
+        dispatch(setToken(token));
+        navigate("/profile");
+      }
+    } catch (error) {
+      console.error(error);
+      setMsgError("Unknown error.");
     }
   };
 
@@ -87,6 +109,7 @@ export default function Login() {
             <button className="sign-in-button" type="submit">
               Sign In
             </button>
+            {msgError && <p className="error-msg">{msgError}</p>}
           </form>
         </section>
       </main>

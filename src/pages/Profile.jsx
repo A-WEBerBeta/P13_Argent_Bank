@@ -19,7 +19,7 @@ export default function Profile() {
       return;
     }
 
-    fetch("http://localhost:3001/api/v1/user/profile", {
+    fetch(import.meta.env.VITE_API_BASE_URL + "/user/profile", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -38,17 +38,20 @@ export default function Profile() {
   const handleSave = async () => {
     if (!token) return navigate("/login");
 
-    const res = await fetch("http://localhost:3001/api/v1/user/profile", {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + token,
-      },
-      body: JSON.stringify({
-        firstName,
-        lastName,
-      }),
-    });
+    const res = await fetch(
+      import.meta.env.VITE_API_BASE_URL + "/user/profile",
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + token,
+        },
+        body: JSON.stringify({
+          firstName,
+          lastName,
+        }),
+      }
+    );
 
     const data = await res.json();
 
@@ -96,22 +99,20 @@ export default function Profile() {
 
               <div className="edit-wrapper">
                 <div className="input-wrapper">
-                  <label htmlFor="firstName">First name</label>
+                  <label htmlFor="firstName"></label>
                   <input
                     id="firstName"
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
                   />
-                </div>
-
-                <div className="input-wrapper">
-                  <label htmlFor="lastName">Last name</label>
+                  <label htmlFor="lastName"></label>
                   <input
                     id="lastName"
                     value={lastName}
                     onChange={(e) => setLastName(e.target.value)}
                   />
                 </div>
+
                 <div className="button-wrapper">
                   <button className="edit-button" onClick={handleSave}>
                     Save
