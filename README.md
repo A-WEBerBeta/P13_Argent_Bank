@@ -1,16 +1,95 @@
-# React + Vite
+# 🏦 Argent Bank - React Authentication App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is part of the **OpenClassrooms Front-End Developer path** (Project 13).  
+It’s a responsive banking web application built with **React**, **Redux Toolkit**, and **React Router**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## React Compiler
+- User authentication (login/logout)
+- Secure profile access (JWT)
+- State management with Redux Toolkit
+- User information update via API
+- Fully responsive design based on the provided mockups
 
-The React Compiler is not enabled on this template. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🧰 Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Front-end:** React, Redux Toolkit, React Router
+- **Styling:** CSS
+- **API:** Argent Bank API (Node.js)
+- **Build tool:** Vite
+
+---
+
+## ⚙️ Installation
+
+1. Clone both repositories:
+
+   ```bash
+   # Frontend
+   git clone https://github.com/your-username/argent-bank.git
+   cd argent-bank
+
+   # Backend (API)
+   git clone https://github.com/OpenClassrooms-Student-Center/Project-10-Bank-API.git
+
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   npm install
+
+   ```
+
+3. Run the API:
+
+   ```bash
+   npm run dev:server
+
+   ```
+
+4. Run the front-end:
+
+   ```bash
+   npm run dev
+   ```
+
+## 🧪 Test Accounts
+
+| Email            | Password    |
+| ---------------- | ----------- |
+| tony@stark.com   | password123 |
+| steve@rogers.com | password456 |
+
+---
+
+## 📁 Folder Structure
+
+    ```bash
+    src/
+    ├── assets/           # Images and styles
+    ├── components/       # Reusable components
+    ├── features/         # Redux slices (auth, user)
+    ├── pages/            # React pages (Home, Login, Profile)
+    ├── store/            # Redux store configuration
+    └── App.jsx           # Main app entry
+
+---
+
+## 🧩 API Endpoints Used
+
+| Method | Endpoint             | Description       |
+| ------ | -------------------- | ----------------- |
+| POST   | /api/v1/user/login   | Authenticate user |
+| POST   | /api/v1/user/profile | Get user profile  |
+| PUT    | /api/v1/user/profile | Update user info  |
+
+---
+
+## 📌 Notes
+
+Référence : [Notes Vites](./VITE_NOTES.md)

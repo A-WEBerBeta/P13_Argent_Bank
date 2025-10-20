@@ -77,9 +77,13 @@ body {
 }
 
 .error-msg {
-  color: rgb(211, 2, 2);
-  font-weight: bold;
-  font-size: 14px;
+  margin-top: 1rem;
+  padding: 0.5rem 0.75rem;
+  color: #b00020;
+  background: #fde7e9;
+  border-left: 4px solid #b00020;
+  border-radius: 4px;
+  text-align: left;
 }
 
 .hero {
