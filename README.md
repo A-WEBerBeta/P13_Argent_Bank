@@ -69,14 +69,15 @@ It’s a responsive banking web application built with **React**, **Redux Toolki
 
 ## 📁 Folder Structure
 
-    ```bash
-    src/
-    ├── assets/           # Images and styles
-    ├── components/       # Reusable components
-    ├── features/         # Redux slices (auth, user)
-    ├── pages/            # React pages (Home, Login, Profile)
-    ├── store/            # Redux store configuration
-    └── App.jsx           # Main app entry
+```bash
+  src/
+  ├── assets/           # Images and styles
+  ├── components/       # Reusable components
+  ├── features/         # Redux slices (auth, user)
+  ├── pages/            # React pages (Home, Login, Profile)
+  ├── store/            # Redux store configuration
+  └── App.jsx           # Main app entry
+```
 
 ---
 
